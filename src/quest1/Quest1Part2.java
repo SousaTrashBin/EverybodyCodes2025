@@ -3,6 +3,9 @@ package quest1;
 import java.io.IOException;
 import java.nio.file.Path;
 
+import static quest1.Quest1.Instruction.Left;
+import static quest1.Quest1.Instruction.Right;
+
 public class Quest1Part2 extends Quest1 {
 
     public Quest1Part2(Path inputPath) throws IOException {
@@ -14,8 +17,8 @@ public class Quest1Part2 extends Quest1 {
         var currentPosition = 0;
         for (Instruction instruction : instructions) {
             currentPosition = switch (instruction) {
-                case Instruction.Right(int value) -> Math.floorMod(currentPosition + value, names.length);
-                case Instruction.Left(int value) -> Math.floorMod(currentPosition - value, names.length);
+                case Right(int value) -> Math.floorMod(currentPosition + value, names.length);
+                case Left(int value) -> Math.floorMod(currentPosition - value, names.length);
             };
         }
         return names[currentPosition];

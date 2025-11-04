@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Arrays;
 
+import static quest1.Quest1.Instruction.Left;
+import static quest1.Quest1.Instruction.Right;
+
 public class Quest1Part3 extends Quest1 {
 
     public Quest1Part3(Path inputPath) throws IOException {
@@ -15,8 +18,8 @@ public class Quest1Part3 extends Quest1 {
         var currentNames = Arrays.copyOf(names, names.length);
         for (Instruction instruction : instructions) {
             int targetIndex = switch (instruction) {
-                case Instruction.Right(int value) -> Math.floorMod(value, currentNames.length);
-                case Instruction.Left(int value) -> Math.floorMod(-value, currentNames.length);
+                case Right(int value) -> Math.floorMod(value, currentNames.length);
+                case Left(int value) -> Math.floorMod(-value, currentNames.length);
             };
             swap(currentNames, 0, targetIndex);
         }
