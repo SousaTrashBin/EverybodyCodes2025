@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.stream.Gatherer;
 
 public class FunctionalUtils {
-    public static <A, B> Gatherer<A, Void, Pair<A, B>> zip(Iterator<B> iterator) {
+    public static <A, B> Gatherer<A, Void, Pair<A, B>> zipWith(Iterator<B> iterator) {
         return Gatherer.ofSequential((_, element, downstream) -> {
             if (!iterator.hasNext()) {
                 return false;
